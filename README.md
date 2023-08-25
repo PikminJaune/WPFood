@@ -1,2 +1,2 @@
 # WPFood
-Projet en WPF pour un restaurant fait au Cégep de Saint-Jérome
+WIP SCREENSHOT ET EXPLICATIONS À VENIR 
