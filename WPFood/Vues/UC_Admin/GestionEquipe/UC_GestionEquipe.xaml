@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="WPFood.Vues.UC_Admin.UC_GestionEquipe"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFood.Vues.UC_Admin"
+             mc:Ignorable="d" 
+             Background="{StaticResource Sapphire}">
+    <Grid Loaded="Grid_Loaded" Margin="15, 0, 15, 0">
+        <!--#region Definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <Grid Grid.Row="0">
+            <Button Content="Menu admin"
+                Click="RetourMenuAdmin_Click"
+                Height="80" 
+                Width="300" 
+                FontSize="30"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Left"              
+                Background="{StaticResource Light_Slate_Gray}"
+                Foreground="{StaticResource American_Silver}"
+                materialDesign:ButtonAssist.CornerRadius="15"
+                />
+            <TextBlock Text="Gestion de l'équipe" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Center" 
+                   TextDecorations="Underline" 
+                   Foreground="{StaticResource American_Silver}"
+                   Style="{DynamicResource MaterialDesignHeadline1TextBlock}"/>
+        </Grid>
+            
+
+        <!-- /////////////////////////// -->
+
+        <Grid Grid.Row="1" Margin="0, 5, 0, 0">
+            <!--#region Definitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="683"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <!-- DataGrid -->
+            <DataGrid
+                Grid.Row="0"
+                Name="dgEmployes"
+                ItemsSource="{Binding LstEmployes}"                          
+                AutoGenerateColumns="False" 
+                IsReadOnly="True" 
+                VerticalAlignment="Top"
+                RowHeaderWidth="0"
+                ColumnHeaderHeight="50"
+                TextBlock.FontSize="30"                
+                ScrollViewer.CanContentScroll="True"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                SelectionMode="Single"
+                Background="{StaticResource Cadet_Gray}"
+                Foreground="Black">
+
+                <!--#region DataGrid.Resources-->
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="{StaticResource Light_Slate_Gray}"/>
+                        <Setter Property="Foreground" Value="{StaticResource American_Silver}"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.Resources>
+                <!--#endregion-->
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom" Width="*" Binding="{Binding Nom}"/>
+                    <DataGridTextColumn Header="Prenom" Width="*" Binding="{Binding Prenom}"/>
+                    <DataGridTextColumn Header="Fonction" Width="*" Binding="{Binding Fonction}"/>
+                    <DataGridTextColumn Header="Identifiant" Width="*" Binding="{Binding Identifiant}"/>
+                    <DataGridTextColumn Header="Mot de passe" Width="*" Binding="{Binding MotDePasse}"/>
+                    <DataGridTextColumn Header="Date de naissance" Width="*" Binding="{Binding DateNaissance, StringFormat=yyyy-MM-dd}"/>
+                    <DataGridTextColumn Header="Genre" Width="*" Binding="{Binding Genre}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- /////////////////////////// -->
+            
+            <!-- Boutons -->
+            <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                <Button Click="Ajouter_Click" Content="Ajouter un membre"
+                        Height="125"
+                        Margin="15, 0, 15, 0"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        FontSize="40"
+                        Foreground="{StaticResource American_Silver}"
+                        Background="{StaticResource Light_Slate_Gray}"
+                        />
+
+                <Button Click="Modifier_Click" Content="Modifier un membre"
+                        Height="125"
+                        Margin="15, 0, 15, 0"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        FontSize="40"
+                        Foreground="{StaticResource American_Silver}"
+                        Background="{StaticResource Light_Slate_Gray}"
+                        />
+
+                <Button Click="Supprimer_Click" Content="Supprimer un membre"
+                        Height="125"
+                        Margin="15, 0, 15, 0"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        FontSize="40"
+                        Foreground="{StaticResource American_Silver}"
+                        Background="{StaticResource Light_Slate_Gray}"
+                        />
+
+            </WrapPanel>
+
+        </Grid>
+    </Grid>
+</UserControl>

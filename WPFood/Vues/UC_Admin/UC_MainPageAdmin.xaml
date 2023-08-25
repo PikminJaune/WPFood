@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="WPFood.Vues.UC_Admin.UC_MainPageAdmin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFood.Vues.UC_Admin"
+             mc:Ignorable="d" 
+             Background="#2E5266">
+    <Grid Loaded="Grid_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Admin" 
+                   Style="{DynamicResource MaterialDesignHeadline1TextBlock}" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   TextDecorations="Underline" 
+                   FontWeight="Bold"
+                   Foreground="{StaticResource American_Silver}"
+                   />
+
+        <!-- //////////////////////////////////////////////////// -->
+
+        <Grid Grid.Row="1" Margin="15">
+            <!--#region Définitions + Ressources-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--#endregion-->
+
+            <Button Content="Tables" 
+                    Grid.Row="0" 
+                    Grid.Column="0" 
+                    Click="btnTables_Click"
+                    materialDesign:ButtonAssist.CornerRadius="150"
+                    Height="350"
+                    Width="580"
+                    Margin="20"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    TextBlock.FontSize="80"
+                    Foreground="{StaticResource American_Silver}"
+                    />
+
+            <Button Content="Équipe" 
+                    Grid.Row="0" 
+                    Grid.Column="1" 
+                    Click="btnEquipe_Click"
+                    materialDesign:ButtonAssist.CornerRadius="150"
+                    Height="350"
+                    Width="580"
+                    Margin="20"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    TextBlock.FontSize="80"
+                    Foreground="{StaticResource American_Silver}"
+                    />
+
+            <Button Content="Menus" 
+                    Grid.Row="0" 
+                    Grid.Column="2" 
+                    Click="btnMenu_Click"
+                    materialDesign:ButtonAssist.CornerRadius="150"
+                    Height="350"
+                    Width="580"
+                    Margin="20"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    TextBlock.FontSize="80"
+                    Foreground="{StaticResource American_Silver}"
+                    />
+
+            <Button Content="Inventaire" 
+                    Grid.Row="1" 
+                    Grid.Column="0" 
+                    Click="btnStock_Click"
+                    materialDesign:ButtonAssist.CornerRadius="150"
+                    Height="350"
+                    Width="580"
+                    Margin="20"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    TextBlock.FontSize="80"
+                    Foreground="{StaticResource American_Silver}"
+                    IsEnabled="False"
+                    />
+
+            <Button Content="Statistiques" 
+                    Grid.Row="1"
+                    Grid.Column="1" 
+                    Click="btnStatistiques_Click"
+                    materialDesign:ButtonAssist.CornerRadius="150"
+                    Height="350"
+                    Width="580"
+                    Margin="20"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    TextBlock.FontSize="80"
+                    Foreground="{StaticResource American_Silver}"
+                    />
+
+            <Button Content="Commentaires" 
+                    Grid.Row="1" 
+                    Grid.Column="2" 
+                    Click="btnCommentaires_Click"
+                    materialDesign:ButtonAssist.CornerRadius="150"
+                    Height="350"
+                    Width="580"
+                    Margin="20"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    TextBlock.FontSize="80"
+                    Foreground="{StaticResource American_Silver}"
+                    IsEnabled="False"
+                    />
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

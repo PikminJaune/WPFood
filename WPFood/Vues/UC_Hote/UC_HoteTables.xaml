@@ -1,0 +1,281 @@
+﻿<UserControl x:Class="WPFood.Vues.UC_HoteTables"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local="clr-namespace:WPFood.Vues"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Loaded="Grid_Loaded" Background="{StaticResource Sapphire}" Margin="10" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+        <!--#region Grid.RowDefinitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <Grid Grid.Row="0">
+            <Button Content="Réservations"        
+                Height="80" 
+                Width="300" 
+                FontSize="30" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Left" 
+                Click="Reservations_Click" 
+                Background="{StaticResource Light_Slate_Gray}"
+                Foreground="{StaticResource American_Silver}"
+                materialDesign:ButtonAssist.CornerRadius="15"
+                />
+
+            <TextBlock 
+            Text="Associer des tables" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"            
+            TextDecorations="Underline" 
+            Style="{DynamicResource MaterialDesignHeadline1TextBlock}"
+            Foreground="{StaticResource American_Silver}"
+            />
+        </Grid>
+
+        <!-- ///////////////////////////////////////////////////////////////// -->
+
+        <Grid Grid.Row="1">
+            <!--#region Grid.ColumnDefinitions-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1640"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
+
+            <!-- Les tables -->
+            <WrapPanel>
+
+                <ListBox Name="LBTables"
+                         ScrollViewer.CanContentScroll="True"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ItemsSource="{Binding LstTables}"
+                         Width="1750"
+                         Height="820"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         TextBlock.TextAlignment="Center"
+                         Background="Transparent"
+                         BorderBrush="Black"
+                         >
+
+                    <!--#region Ressources-->
+                    <ListBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </ListBox.Resources>
+                    <!--#endregion-->
+
+                    <!-- Pour la taille et l'alignement des tables -->
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="Width" Value="390"/>
+                            <Setter Property="Height" Value="390"/>
+                            <Setter Property="Margin" Value="10"/>
+                            <Setter Property="FontSize" Value="50"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Border x:Name="Bd" 
+                                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                                Background="{TemplateBinding Background}"
+                                                Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="BorderBrush" Value="White"/>
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="BorderBrush" Value="White"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Pour quand on clique sur une table -->
+                            <EventSetter Event="MouseLeftButtonUp" Handler="ListViewItem_MouseLeftButtonUp"/>
+
+                            <!-- Pour rendre une table ronde -->
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="250"/>
+                                </Style>
+                            </Style.Resources>
+
+                            <!-- Pour changer la couleur selon la disponnibilité de la table -->
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Etat}" Value="Occupée">
+                                    <Setter Property="Background" Value="#D64161"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Etat}" Value="Libre">
+                                    <Setter Property="Background" Value="#435E55"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Etat}" Value="A Nettoyer">
+                                    <Setter Property="Background" Value="{StaticResource Dijon}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <!-- Pour gérer comment le ListBox va gérer son interface -->
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                </ListBox>
+
+            </WrapPanel>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- Les options -->
+            <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center">
+                <!--#region Grid.RowDefinitions-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+
+                <Grid Grid.Row="0">
+                    <Border BorderBrush="{StaticResource American_Silver}" BorderThickness="2" CornerRadius="15">
+
+                        <TextBlock Text="Nombre total de tables: "
+                               FontSize="35"
+                               Foreground="{StaticResource American_Silver}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
+                               Name="TBNbTables"
+                               />
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="1" Width="230" >
+                    <TextBox Name="tbNbPlace" 
+                             Grid.ColumnSpan="2" 
+                             FontSize="25"
+                             Foreground="{StaticResource American_Silver}"
+                             Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                             HorizontalContentAlignment="Center"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             SelectionChanged="TbNbPlaces_SelectionChanged"
+                             PreviewTextInput="NumberValidationTextBox"
+                             >
+
+                        <TextBox.Resources>
+                            <!--Le background-->
+                            <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                        </TextBox.Resources>
+
+                        <!--Pour changer les couleurs du Hint-->
+                        <materialDesign:HintAssist.Hint>
+                            <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Nombre de places" />
+                        </materialDesign:HintAssist.Hint>
+
+                    </TextBox>
+                </Grid>
+
+                <!-- États des tables -->
+                <Grid Grid.Row="2" 
+                      Width="230" 
+                      VerticalAlignment="Center">
+                    <!--#region Grid.RowDefinitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--#endregion-->
+
+                    <TextBlock Text="États des tables" 
+                           Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           Margin="10"
+                           FontSize="30"
+                           TextDecorations="Underline"
+                           Foreground="{StaticResource American_Silver}"
+                           />
+
+                    <!--#region Toutes les tables-->
+                    <WrapPanel Grid.Row="1" Margin="10">
+                        <Viewbox Height="30">
+                            <RadioButton Name="RBToutesLesTables"                         
+                             GroupName="filtre" 
+                             Checked="ToutesTables_Checked" 
+                             Style="{StaticResource MaterialDesignRadioButton}"                                                       
+                             />
+                        </Viewbox>
+                        <TextBlock Text="Toutes" 
+                               FontSize="25" 
+                               Foreground="{StaticResource American_Silver}"
+                               />
+                    </WrapPanel>
+                    <!--#endregion-->
+
+                    <!--#region Les tables libres-->
+                    <WrapPanel Grid.Row="2" Margin="10">
+                        <Viewbox Height="30">
+                            <RadioButton Name="RBTablesLibres"                         
+                             GroupName="filtre" 
+                             Checked="TablesLibres_Checked" 
+                             Style="{StaticResource MaterialDesignRadioButton}"                                                       
+                             />
+                        </Viewbox>
+                        <TextBlock Text="Libres" 
+                               FontSize="25" 
+                               Foreground="{StaticResource American_Silver}"
+                               />
+                    </WrapPanel>
+                    <!--#endregion-->
+
+                    <!--#region Tables à nettoyer-->
+                    <WrapPanel Grid.Row="3" Margin="10">
+                        <Viewbox Height="30">
+                            <RadioButton Name="RBTablesANettoyer"                         
+                             GroupName="filtre" 
+                             Checked="TablesNettoyage_Checked" 
+                             Style="{StaticResource MaterialDesignRadioButton}"                                                       
+                             />
+                        </Viewbox>
+                        <TextBlock Text="À Nettoyer" 
+                               FontSize="25" 
+                               Foreground="{StaticResource American_Silver}"
+                               />
+                    </WrapPanel>
+                    <!--#endregion-->
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

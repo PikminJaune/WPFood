@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="WPFood.Vues.UC_HistoriqueCommandeFournisseur"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFood.Vues"
+             mc:Ignorable="d" 
+             d:DesignHeight="930" d:DesignWidth="1500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel VerticalAlignment="Center">
+            <Button Content="Retour" Click="btn_ClickRetour" Margin="0,0,50,0" Width="100" FontSize="18" Cursor="Hand"/>
+            <Label Content="Historique des commandes fournisseurs" FontSize="30"/>
+        </WrapPanel>
+
+
+
+    </Grid>
+</UserControl>

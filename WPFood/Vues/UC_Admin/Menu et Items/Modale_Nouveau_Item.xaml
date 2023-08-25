@@ -1,0 +1,65 @@
+﻿<Window x:Class="WPFood.Vues.UC_Admin.Menu_et_Items.Modale_Ajouter_MenuItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFood.Vues.UC_Admin.Menu_et_Items"
+        mc:Ignorable="d"
+        Title="Modale_Ajouter_MenuItem" Height="530" Width="800">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Background" Value="{StaticResource Light_Slate_Gray}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Loaded="Grid_Loaded" Background="{StaticResource Light_Slate_Gray}">
+        <StackPanel HorizontalAlignment="Center">
+            <Label Content="Créer un Item" FontSize="35"/>
+
+            <WrapPanel Margin="0,30,0,30">
+                <Label Content="Nom de l'item" Margin="0,0,35,0"/>
+                <TextBox Name="txbNomItem" Width="150"/>
+            </WrapPanel>
+
+            <WrapPanel Margin="0,30,0,30">
+                <Label Content="Catégorie de l'item" Margin="0,0,10,0"/>
+                <!--<TextBox Name="txbCategorieItem" Width="150"/>-->
+                <ComboBox Width="150" Name="cbxCategorieItem">
+                    <ComboBoxItem Content="Breuvage" IsSelected="True"/>
+                    <ComboBoxItem Content="Viandes"/>
+                    <ComboBoxItem Content="Hamburger"/>
+                    <ComboBoxItem Content="Salade"/>
+                    <ComboBoxItem Content="Poisson"/>
+                    <ComboBoxItem Content="Pâté"/>
+                    <ComboBoxItem Content="Sandwich"/>
+                    <ComboBoxItem Content="Fast Food"/>
+                    <ComboBoxItem Content="Pates"/>
+                    <ComboBoxItem Content="Autres"/>
+                </ComboBox>
+            </WrapPanel>
+
+            <WrapPanel Margin="0,30,0,30">
+                <Label Content="Prix de l'item" Margin="0,0,40,0"/>
+                <TextBox Name="txbPrixItem" Width="150"/>
+            </WrapPanel>
+
+
+            <Button Name="btnInsertImage" Click="btnInsertImage_Click" Content="Insérer une image " Margin="0,30,0,30" FontSize="20"/>
+
+            <Button Content="Ajouter" Click="btn_AjouterUnItem" FontSize="20"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

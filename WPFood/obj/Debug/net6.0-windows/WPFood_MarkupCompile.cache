@@ -1,0 +1,20 @@
+﻿WPFood
+
+
+winexe
+C#
+.cs
+C:\Users\1847622\Downloads\WPFood2.0-v.1.0\WPFood2.0-v.1.0\WPFood\obj\Debug\net6.0-windows\
+WPFood
+none
+false
+TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+C:\Users\1847622\Downloads\WPFood2.0-v.1.0\WPFood2.0-v.1.0\WPFood\App.xaml
+28515268530
+1-72966963
+701875941792
+232-1781800512
+MainWindow.xaml;Vues\UC_Admin\GestionEquipe\ModaleAdminEmploye.xaml;Vues\UC_Admin\GestionEquipe\UC_GestionEquipe.xaml;Vues\UC_Admin\GestionTables\ModaleAdminTables.xaml;Vues\UC_Admin\GestionTables\UC_GestionTables.xaml;Vues\UC_Admin\Gestion_Commentaires\UC_GestionCommentaires.xaml;Vues\UC_Admin\Gestion_Stock\UC_GestionStock.xaml;Vues\UC_Admin\Menu et Items\Modale_Ajouter_Menu.xaml;Vues\UC_Admin\Menu et Items\Modale_Modifier_Item.xaml;Vues\UC_Admin\Menu et Items\Modale_Nouveau_Item.xaml;Vues\UC_Admin\Menu et Items\UC_GestionMenu.xaml;Vues\UC_Admin\Menu et Items\UC_ModifierMenu.xaml;Vues\UC_Admin\Statistiques\UC_AfficherStatistiques.xaml;Vues\UC_Admin\UC_MainPageAdmin.xaml;Vues\UC_Client\UC_ClientCommentaire.xaml;Vues\UC_Client\UC_CommentaireTemplate.xaml;Vues\UC_CommandeFournisseur.xaml;Vues\UC_Connexion\UC_Connexion.xaml;Vues\UC_Cuisinier\UC_MainPageCuisinier.xaml;Vues\UC_Cuisinier\UC_TemplateCommandeCuisinier.xaml;Vues\UC_HistoriqueCommandeFournisseur.xaml;Vues\UC_Hote\Modale_HoteReservations.xaml;Vues\UC_Hote\Modale_HoteTables.xaml;Vues\UC_Hote\UC_HoteReservations.xaml;Vues\UC_Hote\UC_HoteTables.xaml;Vues\UC_Serveur\Modale_Note_Serveur.xaml;Vues\UC_Serveur\UC_Serveur.xaml;Vues\UC_Serveur\UC_ServeurPayer.xaml;
+
+False
+

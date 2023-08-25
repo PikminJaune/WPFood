@@ -1,0 +1,87 @@
+﻿<UserControl xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  x:Class="WPFood.Vues.UC_Client.UC_CommentaireTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFood.Vues.UC_Client"
+             mc:Ignorable="d" Background="{DynamicResource Sapphire}" Width="800" MinHeight="150" Height="auto">
+    <materialDesign:Card
+        Margin="10"
+        Background="{StaticResource Jean}"
+        materialDesign:ElevationAssist.Elevation="Dp16">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="5,5,0,0" Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock Name="lbl_NomClient"
+                                    Text="{Binding NomClient}"
+                                    Style="{DynamicResource MaterialDesignHeadline4TextBlock}" 
+                                    TextDecorations="Underline"
+                                    Foreground="white"/>
+                </StackPanel>
+
+                <WrapPanel Margin="0,5,0,0">
+                    <TextBlock Name="lbl_ServisPar" 
+                                Text="Serveur: "
+                                Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
+                                Foreground="white"/>
+
+                    <TextBlock Name="lbl_NomServeur" 
+                                    Text="{Binding NomServeur}"
+                                    Style="{DynamicResource MaterialDesignHeadliner1TextBlock}"
+                                    FontSize="20"
+                                    Foreground="white"/>
+                </WrapPanel>
+
+                <WrapPanel>
+                    <TextBlock Name="base_text"
+                               Text="Écrit le : "
+                               Foreground="white"
+                               Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"
+                               FontSize="18"
+                               FontWeight="Bold"
+                        />
+
+
+                    <TextBlock Name="lbl_DateCommentaire" 
+                                        Text="{Binding DateMessage,
+                                        StringFormat=d}"
+                                        Foreground="white"
+                                        Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"
+                                        FontSize="18"/>
+
+                </WrapPanel>                
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock 
+                        Text="{Binding TextRecommandation}"
+                        Foreground="white"
+                        Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"
+                        FontSize="15"/>
+
+                    <materialDesign:PackIcon
+                        x:Name="MyPackIcon"
+                        Width="40"
+                        Height="25"
+                        Margin="0,0,0,5"
+                        Kind="{Binding Icon}"/>
+                </StackPanel>                    
+
+            </StackPanel>
+            
+            <TextBlock Name="txb_ContenuMessage" Grid.Column="1" 
+                           Text="{Binding ContenuMessage}" 
+                           TextWrapping="Wrap"
+                           Margin="5"
+                           Foreground="white" 
+                           FontSize="30"
+                           Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+            
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

@@ -1,0 +1,251 @@
+﻿<Window x:Class="WPFood.Vues.UC_Hote.Modale_HoteReservations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:local="clr-namespace:WPFood.Vues.UC_Hote"
+        mc:Ignorable="d"
+        Title="Modale_HoteReservations"
+        Height="810" 
+        Width="850" 
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Border CornerRadius="15" BorderBrush="Black" BorderThickness="2" Background="#2E5266">
+        <Grid>
+            <!--#region Grid.Definitions + Grid.Resources-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="600"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
+
+            <!-- Titre -->
+            <TextBlock Name="tbTitre" 
+                       Text="Ajouter/Modifier" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       TextDecorations="Underline" 
+                       Style="{StaticResource MaterialDesignHeadline2TextBlock}"
+                       Foreground="{StaticResource American_Silver}"
+                       Grid.ColumnSpan="3"
+                       />
+
+            <!-- Nom + Tel-->
+            <Grid Name="gridNomTel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBox Name="tbNom" 
+                         FontSize="35"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Width="415"
+                         Height="80"
+                         Margin="10"
+                         Foreground="{StaticResource American_Silver}"
+                         HorizontalContentAlignment="Center"
+                         materialDesign:HintAssist.Hint="Nom"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         materialDesign:HintAssist.Background="{DynamicResource Sapphire}"
+                         />
+
+                    <TextBox Name="tbNumTel" 
+                         PreviewTextInput="TextBoxChiffres" 
+                         FontSize="35"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Width="415"
+                         Height="80"
+                         Margin="10"
+                         Foreground="{StaticResource American_Silver}"
+                         HorizontalContentAlignment="Center"
+                         materialDesign:HintAssist.Hint="Numéro téléphone"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         materialDesign:HintAssist.Background="{DynamicResource Sapphire}"
+                         />
+                </StackPanel>
+            </Grid>
+
+            <!-- Nb clients -->
+            <Grid Name="gridClients" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Visibility="Hidden">
+                <TextBox Name="tbNbClients" 
+                         PreviewTextInput="TextBoxChiffres" 
+                         FontSize="35"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Width="415"
+                         Height="80"
+                         Margin="10"
+                         Foreground="{StaticResource American_Silver}"
+                         HorizontalContentAlignment="Center"
+                         materialDesign:HintAssist.Hint="Nombre de clients"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         materialDesign:HintAssist.Background="{DynamicResource Sapphire}"
+                         />
+            </Grid>
+
+            <!-- #Table -->
+            <Grid Name="gridNumTables" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Visibility="Hidden">
+                <ComboBox Name="cbTables" 
+                          FontSize="35"
+                          HorizontalAlignment="Center"
+                          HorizontalContentAlignment="Center"
+                          VerticalAlignment="Center"
+                          Width="415"
+                          Height="80"
+                          Margin="10"
+                          Foreground="{StaticResource American_Silver}"
+                          Style="{DynamicResource MaterialDesignOutlinedComboBox}"
+                          materialDesign:HintAssist.Background="{DynamicResource Sapphire}"
+                         >
+
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="Height" Value="50" />
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            <Setter Property="Width" Value="190"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+
+                    <ComboBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                    </ComboBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Table souhaitée" />
+                    </materialDesign:HintAssist.Hint>
+
+                </ComboBox>
+            </Grid>
+
+            <!-- Date souhaitée -->
+            <Grid Name="gridDate" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Visibility="Hidden">
+                <DatePicker Name="dpDate"                           
+                            FontSize="35"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Width="415"
+                            Height="80"
+                            Margin="10"
+                            Foreground="{StaticResource American_Silver}"
+                            HorizontalContentAlignment="Center"                           
+                            Style="{StaticResource MaterialDesignOutlinedDatePicker}" 
+                            Focusable="False"                            
+                            >
+
+                    <!--Pour changer les couleurs du DatePicker-->
+                    <DatePicker.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                        <!--Le header-->
+                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#6E8898" />
+                    </DatePicker.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Date souhaitée" />
+                    </materialDesign:HintAssist.Hint>
+
+                </DatePicker>
+
+            </Grid>
+
+            <!-- Heure souhaitée -->
+            <Grid Name="gridHeure" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Visibility="Hidden">
+                <ComboBox Name="cbHeures"                         
+                          SelectedIndex="0" 
+                          FontSize="35"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center"
+                          Width="415"
+                          Height="80"
+                          Margin="10"
+                          Foreground="{StaticResource American_Silver}"                                                
+                          SelectionChanged="cbHeures_SelectionChanged"
+                          Style="{DynamicResource MaterialDesignOutlinedComboBox}"                        
+                          materialDesign:HintAssist.Foreground="{StaticResource American_Silver}"
+                          materialDesign:HintAssist.Background="{DynamicResource Sapphire}"
+                >
+                    <ComboBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                    </ComboBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Heure souhaitée" />
+                    </materialDesign:HintAssist.Hint>
+                </ComboBox>
+            </Grid>
+
+            <!-- Boutons -->
+            <Grid Grid.Row="7" Grid.ColumnSpan="3">
+                <!--#region Grid.ColumnDefinitions-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--#endregion-->
+
+                <Button Name="btnAjoutModif" 
+                        Content="Ajouter/Modif" 
+                        Click="AjoutModif_Click" 
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        Height="80"
+                        Margin="5"
+                        FontSize="45"
+                        Foreground="{StaticResource American_Silver}"
+                        Background="{StaticResource Light_Slate_Gray}"
+                        />
+
+                <Button Name="btnAnnuler"
+                        Content="Annuler" 
+                        Grid.Column="1" 
+                        Click="Annuler_Click" 
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        Height="80"
+                        Margin="5"
+                        FontSize="45"
+                        Foreground="{StaticResource American_Silver}"
+                        Background="{StaticResource Light_Slate_Gray}"
+                        />
+            </Grid>
+
+            <!-- Navigation -->
+            <Button Grid.Column="0" 
+                    Grid.Row="1"
+                    Content="Retour"
+                    Width="200"
+                    Height="80"
+                    FontSize="45"     
+                    materialDesign:ButtonAssist.CornerRadius="25"
+                    Name="btnRetour"
+                    Visibility="Hidden"
+                    Click="btnRetour_Click"
+                    />
+            <Button Grid.Column="2" 
+                    Grid.Row="1"
+                    Content="Suivant"
+                    Width="200"
+                    Height="80"
+                    FontSize="45"     
+                    materialDesign:ButtonAssist.CornerRadius="25"
+                    Name="btnSuivant"
+                    Click="btnSuivant_Click"
+                    />
+
+        </Grid>
+    </Border>
+</Window>

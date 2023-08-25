@@ -1,0 +1,98 @@
+﻿<Window x:Class="WPFood.Vues.UC_Admin.GestionTables.ModaleAdminTables"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WPFood.Vues.UC_Admin.GestionTables"
+        mc:Ignorable="d"
+        Title="ModaleAdminTables" Height="400" Width="700" ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Border CornerRadius="15" BorderBrush="Black" BorderThickness="2" Background="#2E5266">
+        <Grid>
+            <!--#region Grid.RowDefinitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <TextBlock Grid.Row="0" 
+                       Grid.Column="0" 
+                       Name="ModaleType"
+                       Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
+                       Foreground="{StaticResource American_Silver}"
+                       FontSize="50" 
+                       FontWeight="Bold"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"                      
+                       TextDecorations="Underline">Ajout/Modif</TextBlock>
+
+            <!-- /////////////////////////////////////// -->
+            <Grid Grid.Row="1">
+                <!--#region Definitions-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+
+                <!--NbPlacesMax-->
+                <TextBox Name="tbNbPlaceMax" 
+                         Grid.ColumnSpan="2" 
+                         FontSize="50"
+                         Foreground="{StaticResource American_Silver}"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         HorizontalContentAlignment="Center"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center">
+
+                    <TextBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                    </TextBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Nombre de places maximum" />
+                    </materialDesign:HintAssist.Hint>
+
+                </TextBox>
+
+                <!-- ///////////////////////////////////////////////////// -->
+
+                <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Name="btnAjoutModif" 
+                            Content="Ajouter/Modifier" 
+                            Click="BtnAjoutModif_Click" 
+                            Height="100"
+                            Width="250"
+                            FontSize="35"
+                            materialDesign:ButtonAssist.CornerRadius="15"                         
+                            Background="{StaticResource Light_Slate_Gray}"                           
+                            Foreground="{StaticResource American_Silver}"
+                            Margin="10"
+                            />
+                    <Button Content="Annuler" 
+                            Click="BtnAnnuler_Click"
+                            Height="100"
+                            Width="250"
+                            FontSize="35"
+                            materialDesign:ButtonAssist.CornerRadius="15"
+                            Background="{StaticResource Light_Slate_Gray}"
+                            Foreground="{StaticResource American_Silver}"
+                            Margin="10" 
+                            />
+                </WrapPanel>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

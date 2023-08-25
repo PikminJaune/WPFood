@@ -1,0 +1,308 @@
+﻿<UserControl x:Class="WPFood.Vues.UC_Serveur.UC_Serveur"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFood.Vues.UC_Serveur"
+             xmlns:modele="clr-namespace:WPFood.Modeles"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920" Background="{DynamicResource Sapphire}">
+
+    <!--<UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>-->
+
+    <Grid Loaded="Grid_Loaded">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Serveur"
+                   Grid.ColumnSpan="4"
+                   Margin="0,0,0,50"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Style="{DynamicResource MaterialDesignHeadline1TextBlock}"
+                   Foreground="White"
+                   TextDecorations="Underline"/>
+
+        <Grid 
+            Grid.Row="1"
+            Margin="20,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock 
+                            Name="TableTxt"
+                            Text="Tables"
+                            Style="{DynamicResource MaterialDesignHeadline3TextBlock}"
+                            FontSize="45"
+                            HorizontalAlignment="Left"
+                            Foreground="white" />
+                <ListView x:Name="lvTables" 
+                          Background="Transparent"
+                          Height="280"
+                          ItemsSource="{Binding Tables}" 
+                          SelectedItem="{Binding TableSelectionnee}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Foreground" Value="{DynamicResource American_Silver}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="Width" Value="auto"/>
+                            <Setter Property="FontSize" Value="30"/>
+                            <Setter Property="Margin" Value="0,10,0,0"/>
+                            <Setter Property="FontWeight" Value="Medium"/>
+                            <EventSetter Event="UIElement.MouseLeftButtonUp"  Handler="lvTables_MouseLeftButtonUp"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1" Margin="0,10,0,0">
+                <TextBlock 
+                    Name="ClientsTableTxt"
+                    Text="Clients"
+                    Style="{DynamicResource MaterialDesignHeadline3TextBlock}"
+                    FontSize="45"
+                    Foreground="white" />
+                <ListView x:Name="lvClients" Background="Transparent"
+                            Height="280"
+                            ItemsSource="{Binding Clients}" 
+                            SelectedItem="{Binding ClientSelectionnee}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Foreground" Value="{DynamicResource American_Silver}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="Width" Value="auto"/>
+                            <Setter Property="FontSize" Value="30"/>
+                            <Setter Property="FontWeight" Value="Medium"/>
+                            <EventSetter Event="UIElement.MouseLeftButtonUp"  Handler="lvClients_MouseLeftButtonUp"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+
+                <Button 
+                    FontSize="30"
+                    Content="Faire Payer"
+                    Height="auto"
+                    Name="btn_fairePayer"
+                    Click="btn_fairePayer_Click"
+                    materialDesign:ButtonAssist.CornerRadius="15"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="650"/>
+            </Grid.RowDefinitions>
+            <TextBlock
+                    Text="Menu"
+                    HorizontalAlignment="Center"
+                    Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
+                    Foreground="White" Grid.Row="0"/>
+
+            <ListView ItemsSource="{Binding ItemsMenu}" 
+                      x:Name="LVItemsMenu" 
+                      Grid.Row="1"
+                      Background="Transparent" 
+                      Margin="50,0,10,0">
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="VerticalAlignment" Value="Top"/>
+                        <Setter Property="Foreground" Value="{DynamicResource American_Silver}"/>
+                        <!--<Setter Property="Width" Value="auto"/>-->
+                        <!--<Setter Property="Height" Value="70"/>-->
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="Margin" Value="5"/>
+
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <Border CornerRadius="15">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="Black" Opacity="0.4" />
+                                        </Border.Effect>
+                                        <Border.Style>
+                                            <Style>
+                                                <Setter Property="Border.Background" Value="{StaticResource Light_Slate_Gray}"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="Border.IsMouseOver" Value="true">
+                                                        <Setter Property="Border.Background" Value="{StaticResource Cadet_Gray}"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <StackPanel VerticalAlignment="Center" Width="auto" >
+                                            <Image Source="{Binding Asset}" MaxHeight="100" MaxWidth="200" Margin="0,30,0,0"/>
+                                            <TextBlock Text="{Binding Nom}" HorizontalAlignment="Center" FontSize="25" Margin="0,0,0,30" Foreground="white"/>
+                                        </StackPanel>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>                            
+                        </Setter>
+                        
+                        <EventSetter Event="UIElement.MouseLeftButtonUp" Handler="ListViewItem_MouseLeftButtonUp"/>
+                    </Style>                    
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <TextBlock 
+                    Text="{Binding HeaderCommandeClient}"
+                    HorizontalAlignment="Center"
+                    Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
+                    Foreground="White"/>
+
+            <ListView Grid.Row="1"
+                    ItemsSource="{Binding ItemsClient}"
+                    x:Name="LVItemsClient"
+                    Height="500"
+                    Background="Transparent">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="VerticalAlignment" Value="Top"/>
+                        <Setter Property="Foreground" Value="{DynamicResource American_Silver}"/>
+                        <Setter Property="Width" Value="auto"/>
+                        <Setter Property="Height" Value="70"/>
+                        <Setter Property="FontSize" Value="30"/>
+                        <Setter Property="Margin" Value="5"/>
+                        <EventSetter Event="MouseLeftButtonUp" Handler="LVItemsClient_MouseLeftButtonUp"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+            <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
+                
+                <Button 
+                    Content="📝" 
+                    Width="150"
+                    Name="btnAjouterNote"
+                    Height="60"
+                    Margin="0,0,100,0"
+                    FontSize="40"
+                    Click="btnClick_AjouterNote" Cursor="Hand"/>
+                
+                <Button 
+                    Content="❌"
+                    Name="btnSupprimerItem"
+                    Width="150" 
+                    Height="60" 
+                    FontSize="40" 
+                    Foreground="Red"
+                    Click="btnClick_SupprimerItem"/>
+                
+            </WrapPanel>
+            
+            <Button 
+                Grid.Row="2"
+                Content="Envoyer la commande"
+                Margin="0,50,0,0"
+                Command="{Binding cmdEnregistrer}"
+                Name="btn_enregistrer"
+                Height="60"
+                Width="auto"
+                FontSize="30"
+                materialDesign:ButtonAssist.CornerRadius="15" Cursor="Hand"/>
+        </Grid>
+
+        <StackPanel Grid.Row="1"
+                Grid.Column="3">
+            <TextBlock Text="Les Commandes" 
+                    Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
+                       FontSize="58"
+                       HorizontalAlignment="center"
+                       Foreground=" white"/>
+            <TreeView                 
+                x:Name="commande_Tv"
+                    MinWidth="220"
+                    ItemsSource="{Binding CommandesDuClient}">
+                <TreeView.Resources>
+                    <Style TargetType="TreeViewItem" BasedOn="{StaticResource MaterialDesignTreeViewItem}">
+                        <Setter Property="materialDesign:TreeViewAssist.ExpanderSize"
+                                    Value="32" />
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="materialDesign:TreeViewAssist.ShowSelection" Value="True" />
+                        <EventSetter Event="MouseLeftButtonUp" Handler="TreeViewItem_MouseLeftButtonUp"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding EstTermine}" Value="false" />
+                                    <Condition Binding="{Binding EstPaye}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Foreground" Value="LightGreen"/>
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding EstTermine}" Value="true" />
+                                    <Condition Binding="{Binding EstPaye}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Foreground" Value="Yellow"/>
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding EstTermine}" Value="true" />
+                                    <Condition Binding="{Binding EstPaye}" Value="true" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Foreground" Value="red"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                    <HierarchicalDataTemplate
+                            DataType="{x:Type modele:CommandeClient}"
+                            ItemsSource="{Binding CommandeClientItems}">
+                        <TextBlock Margin="3,2" Text="{Binding}"/>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type modele:CommandeClientItem}">
+                        <TextBlock Margin="3,2" Text="{Binding }"/>
+                    </DataTemplate>
+                </TreeView.Resources>
+            </TreeView>
+            
+        </StackPanel>
+
+            <Button 
+                Grid.Column="3"
+                Grid.Row="1"
+                Margin="10,10,10,26"
+                x:Name="Rafraichir" 
+                Content="Rafraichir" 
+                VerticalAlignment="Bottom"
+                FontSize="30"
+                Height="60"
+                Width="auto"
+                materialDesign:ButtonAssist.CornerRadius="15"
+                Click="btn_Rafraichir_Click" />
+
+    </Grid>
+</UserControl>

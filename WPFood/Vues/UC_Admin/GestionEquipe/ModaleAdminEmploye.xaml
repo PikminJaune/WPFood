@@ -1,0 +1,242 @@
+﻿<Window x:Class="WPFood.Vues.UC_Admin.GestionEquipe.ModaleAdminEmploye"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WPFood.Vues.UC_Admin.GestionEquipe"
+        mc:Ignorable="d"
+        Title="ModaleAdminEmploye" 
+        Height="980" 
+        Width="600" 
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Border CornerRadius="15" BorderBrush="Black" BorderThickness="2" Background="#2E5266">
+        <Grid>
+            <!--#region Grid.RowDefinitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <TextBlock Name="ModaleType" 
+                       Text="Ajout/Modif" 
+                       Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
+                       Foreground="{StaticResource American_Silver}"
+                       FontSize="50" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" 
+                       TextDecorations="Underline"
+                       />
+
+            <!-- /////////////////////////////////////// -->
+
+            <Grid Grid.Row="1" Margin="15">
+                <!--#region Definitions + Grid.Resources-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+
+                <!--Nom-->
+                <TextBox Name="tbNom" 
+                         Grid.Row="0"
+                         Foreground="{StaticResource American_Silver}"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         FontSize="40"
+                         Margin="0, 10, 0, 10"
+                         >
+                    <TextBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                    </TextBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Nom" />
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+
+                <!--Prenom-->
+                <TextBox Name="tbPrenom" 
+                         Grid.Row="1"
+                         Foreground="{StaticResource American_Silver}"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         FontSize="40"
+                         Margin="0, 10, 0, 10"
+                         >
+                    <TextBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                    </TextBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Prénom" />
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+
+                <!--Fonction-->
+                <ComboBox 
+                    Name="cbFonction"
+                    Foreground="{StaticResource American_Silver}"
+                    Grid.Row="2"
+                    FontSize="40"
+                    ItemsSource="{Binding LstFonctions}"                  
+                    Style="{DynamicResource MaterialDesignOutlinedComboBox}"
+                    Margin="0, 10, 0, 10"
+                    >
+
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ComboBoxItem}">
+                            <Setter Property="Foreground" Value="{StaticResource American_Silver}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+
+                    <!--Pour changer les couleurs du DatePicker-->
+                    <ComboBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                        <!--Le header-->
+                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#6E8898" />
+                    </ComboBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Fonctions" />
+                    </materialDesign:HintAssist.Hint>
+                </ComboBox>
+
+                <!--Identifiant-->
+                <TextBox Name="tbIdentifiant"
+                         Grid.Row="3"                         
+                         Foreground="{StaticResource American_Silver}"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         FontSize="40"
+                         Margin="0, 10, 0, 10"
+                         >
+                    <TextBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                    </TextBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Identifiant" />
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+
+                <!--Mot de passe-->
+                <TextBox Name="tbMDP"
+                         Grid.Row="4" 
+                         Foreground="{StaticResource American_Silver}"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         FontSize="40"
+                         Margin="0, 10, 0, 10"
+                         >
+                    <TextBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                    </TextBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Mot de passe" />
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+
+                <!--Date de naissance-->
+                <DatePicker                  
+                        Name="dpDateNaissance"
+                        Grid.Row="5"
+                        Foreground="{StaticResource American_Silver}"
+                        Background="{StaticResource Sapphire}"
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+                        FontSize="40"  
+                        Margin="0, 10, 0, 10"
+                    >
+                    <!--Pour changer les couleurs du DatePicker-->
+                    <DatePicker.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                        <!--Le header-->
+                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#6E8898" />
+                    </DatePicker.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Date de naissance" />
+                    </materialDesign:HintAssist.Hint>
+
+                </DatePicker>
+
+                <!--Genre-->
+                <TextBox Name="tbGenre" 
+                         Grid.Row="6"
+                         Foreground="{StaticResource American_Silver}"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         FontSize="40"
+                         Margin="0, 10, 0, 10"
+                         >
+                    <TextBox.Resources>
+                        <!--Le background-->
+                        <SolidColorBrush x:Key="MaterialDesignPaper" Color="#2E5266" />
+                    </TextBox.Resources>
+
+                    <!--Pour changer les couleurs du Hint-->
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="{StaticResource American_Silver}" Background="Transparent" Text="Genre" />
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+
+                <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+
+                <!--Boutons-->
+                <WrapPanel Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 10, 0, 10">
+
+                    <Button Name="btnAjoutModif" 
+                            Content="Ajouter/Modifier" 
+                            Click="BtnAjoutModif_Click"
+                            Height="100"
+                            Width="250"
+                            Margin="0,0, 10, 0"
+                            materialDesign:ButtonAssist.CornerRadius="15"
+                            FontSize="50"
+                            Foreground="{StaticResource American_Silver}"
+                            Background="{StaticResource Light_Slate_Gray}"
+                            />
+
+                    <Button Content="Annuler" 
+                            Click="BtnAnnuler_Click"
+                            Height="100"
+                            Width="250"
+                            Margin="10,0, 0, 0"
+                            materialDesign:ButtonAssist.CornerRadius="15"
+                            FontSize="50"
+                            Foreground="{StaticResource American_Silver}"
+                            Background="{StaticResource Light_Slate_Gray}"
+                            />
+
+                </WrapPanel>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

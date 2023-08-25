@@ -1,0 +1,166 @@
+﻿<UserControl x:Class="WPFood.Vues.UC_HoteReservations"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFood.Vues"
+             mc:Ignorable="d" Width="1920">
+    <Grid Loaded="Grid_Loaded" Margin="15">
+        <!--#region Grid.RowDefinitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <Grid Grid.Row="0">
+            <Button 
+            Content="Associer Tables" 
+            Height="80" 
+            Width="300" 
+            FontSize="30" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Left" 
+            Click="Associer_Click"
+            materialDesign:ButtonAssist.CornerRadius="15"
+            Foreground="{StaticResource American_Silver}"
+            Background="{StaticResource Light_Slate_Gray}"
+            />
+
+            <TextBlock Text="Réservations" 
+                    VerticalAlignment="Center" 
+                   HorizontalAlignment="Center"                 
+                   TextDecorations="Underline" 
+                   FontWeight="Bold"
+                   Style="{DynamicResource MaterialDesignHeadline1TextBlock}"
+                       Foreground="{StaticResource American_Silver}"
+                   />
+        </Grid>
+
+
+        <!-- /////////////////////////////////////////////////// -->
+
+        <Grid Grid.Row="1" Margin="0 ,5, 0,0 ">
+            <!--#region Grid.RowDefinitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="650"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <DataGrid Name="dgReservations" 
+                      Grid.Row="0" 
+                      ItemsSource="{Binding LstReservations}"
+                      AutoGenerateColumns="False" 
+                      IsReadOnly="True" 
+                      TextBlock.FontSize="30" 
+                      SelectionMode="Single" 
+                      ColumnHeaderHeight="60"
+                      VerticalScrollBarVisibility="Hidden"
+                      Background="{StaticResource Cadet_Gray}"
+                      Foreground="Black"
+                      SelectionChanged="dgReservations_SelectionChanged"
+                      RowHeight="60"
+                      >
+
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="{StaticResource Light_Slate_Gray}"/>
+                        <Setter Property="Foreground" Value="{StaticResource American_Silver}"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom" Width="*" Binding="{Binding NomClient}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Numero de téléphone" Width="*" Binding="{Binding NumeroTelephone}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Nombre de clients" Width="*" Binding="{Binding NbClientAttendu}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="#Table" Width="*" Binding="{Binding Table}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="Width" Value="160" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Date souhaitée" Width="*" Binding="{Binding DateReservation, StringFormat='{}{0:yyyy-MM-dd à HH:mm}'}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <Grid Grid.Row="1">
+                <!--#region Grid.ColumnDefinitions + Grid.Resources-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--#endregion-->
+
+                <Button 
+                    Content="Ajouter" 
+                    Grid.Column="0" 
+                    Click="AjouterReservation_Click"
+                    Height="100"
+                    Width="550"
+                    FontSize="50"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    Foreground="{StaticResource American_Silver}"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    />
+
+                <Button Name="btnModifier"
+                    Content="Modifier"
+                    Grid.Column="1" 
+                    Click="ModifierReservation_Click"
+                    Height="100"
+                    Width="550"
+                    FontSize="50"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    Foreground="{StaticResource American_Silver}"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    />
+
+                <Button Name="btnRetirer"
+                    Content="Retirer" 
+                    Grid.Column="2" 
+                    Click="SupprimerReservation_Click"
+                    Height="100"
+                    Width="550"
+                    FontSize="50"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    Foreground="{StaticResource American_Silver}"
+                    Background="{StaticResource Light_Slate_Gray}"
+                    />
+
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>
