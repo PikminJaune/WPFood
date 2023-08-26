@@ -5,7 +5,7 @@ Le but de ce projet était de créer un .exe en C# (Windows Presentation Foundat
 - Le serveur
 - Le cuisinier 
 - Les commentaires des clients
-- La partie administration
+- La partie admin
 
 # <h1 align="center">La connexion</h1>
 
