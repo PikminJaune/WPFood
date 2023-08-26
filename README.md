@@ -1,7 +1,7 @@
 # WPFood - Projet de restauration en C#
 Ce projet a été developpé au Cégep de Saint-Jérome dans le cours Projet de développement avec <a href="https://github.com/DappySorrow">@DappySorrow</a> et <a href="https://github.com/OLarue">@OLarue</a>.
 Le but de ce projet était de créer un .exe en C# et de l'utiliser sur des tablette microsoft dans les restaurants.Il y a plusieurs rôles pour un même programme.
-- <a href="#hote">L'hôte</a>
+- L'hôte
 - Le serveur
 - Le cuisinier 
 - Les commentaires des clients
@@ -13,7 +13,7 @@ Tout d'abord , l'administrateur à préalablement créé un compte pour l'utilis
 
 ![ecranAccueuil](https://github.com/PikminJaune/WPFood/assets/71794298/f7719253-a2fc-4b5a-8487-50a40b7bd2a6)
 
-# <h1 align="center" id="hote">L'hôte</h1>
+# <h1 align="center">L'hôte</h1>
 L'hôte à pour but d'accueillir les clients pour les placer sur une table.Il peut aussi répondre au téléphone pour prendre des réservations.
 ![ecranHote](https://github.com/PikminJaune/WPFood/assets/71794298/35eeab60-3ab5-4d9c-a39c-4515f3c54f2d)
 Une table rouge est une table occupé présentement.<br>
@@ -81,9 +81,7 @@ On peut aussi ajouter un menu , supprimer un menu ou le modifier.Pour créer un 
 ![ecranAdminMenuItems](https://github.com/PikminJaune/WPFood/assets/71794298/977a7a38-d587-468e-9d99-40c88386da6f)
 
 Ici on modifie un menu déjà existant.À gauche on voit ce que le menu contient et a droite on voit tout les repas qui existe dans le restaurant.On n'a qu'a selectionner un article a droite , cliquer sur "Ajouter item(s) menu" et il sera ajouté.Notez bien qu'on peut ajouter plusieurs items d'un coup dans le menu et également en supprimer un ou plusieurs à la fois.Une fois terminer on clique sur "Enregistrer modifications" et le menu sera disponible avec les repas choisis.<br>
-Dernier petit point pour cette section , c'est ici qu'on créer un repas pour ensuite l'ajouter , ou non , dans le menu.On clique sur "Créer item" et un page formulaire s'ouvre pour créer le nom , sa catégorie , son prix et son image pour le serveur.
-
-![adminMenuItemCreer](https://github.com/PikminJaune/WPFood/assets/71794298/70a5ce1c-e019-4e5f-9aa8-72a0ec316c6d)
+Dernier petit point pour cette section , c'est ici qu'on créer un repas pour ensuite l'ajouter , ou non , dans le menu.On clique sur "Créer item" et un page formulaire s'ouvre pour créer le nom , sa catégorie , son prix et son image pour le serveur.<br>
 
 Chaque partie de l'application qui demande d'ajouter ou de modifier quelque choses à une vérification pour s'assure que chaque ajout est valide.<br>
-Bref , j'espère que vous avez aimé regarder et lire notre projet puisque nous avons eu énormément de plaisir a le faire. 😁
+Bref , j'espère que vous avez aimé regarder et lire notre projet puisque nous avons eu énormément de plaisir à le faire. 😁
