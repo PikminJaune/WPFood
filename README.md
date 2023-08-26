@@ -1,6 +1,6 @@
 # WPFood - Projet de restauration en C#
 Ce projet a été developpé au Cégep de Saint-Jérome dans le cours Projet de développement avec <a href="https://github.com/DappySorrow">@DappySorrow</a> et <a href="https://github.com/OLarue">@OLarue</a>.
-Le but de ce projet était de créer un .exe en C# et de l'utiliser sur des tablette microsoft dans les restaurants.Il y a plusieurs rôles pour un même programme.
+Le but de ce projet était de créer un .exe en C# (Windows Presentation Foundation) et de l'utiliser sur des tablette microsoft dans les restaurants.Il y a plusieurs rôles pour un même programme.
 - L'hôte
 - Le serveur
 - Le cuisinier 
